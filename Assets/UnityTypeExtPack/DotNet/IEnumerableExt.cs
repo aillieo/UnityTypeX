@@ -1,13 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-public static class IEnumerableExt
+namespace AillieoUtils.TypeExt
 {
-    public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
+    public static class IEnumerableExt
     {
-        foreach (T element in source)
+        public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {
-            action(element);
+            foreach (T element in source)
+            {
+                action(element);
+            }
         }
     }
 }
