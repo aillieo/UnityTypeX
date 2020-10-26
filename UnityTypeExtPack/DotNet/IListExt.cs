@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace AillieoUtils.TypeExt
 {
 
-    public static class ListExt
+    public static class IListExt
     {
 
         private static readonly Random rand = new Random();
