@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace AillieoUtils.TypeExt
 {
 
-    public static class DictionaryExt
+    public static class IDictionaryExt
     {
         public static U GetOrDefault<T, U>(this IDictionary<T, U> dictionary, T key)
         {
