@@ -35,5 +35,32 @@ namespace AillieoUtils.TypeExt
 
             return value;
         }
+
+        private static class KeysToRemove<T>
+        {
+            [ThreadStatic]
+            public readonly static List<T> toRemove = new List<T>();
+        }
+        public static int RemoveAll<T, U>(this IDictionary<T, U> dictionary, Func<T, U, bool> predicate)
+        {
+            List<T> toRemove = KeysToRemove<T>.toRemove;
+            toRemove.Clear();
+            foreach (var pair in dictionary)
+            {
+                if (predicate(pair.Key, pair.Value))
+                {
+                    toRemove.Add(pair.Key);
+                }
+            }
+
+            int removeCount = toRemove.Count;
+            for (int i = 0; i < removeCount; ++i)
+            {
+                dictionary.Remove(toRemove[i]);
+            }
+
+            toRemove.Clear();
+            return removeCount;
+        }
     }
 }
