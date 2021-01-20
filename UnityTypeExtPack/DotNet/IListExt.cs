@@ -31,5 +31,23 @@ namespace AillieoUtils.TypeExt
 
             return list[rand.Next(n + 1)];
         }
+
+        public static void RemoveAtSwapBack<T>(this IList<T> list, int index)
+        {
+            int count = list.Count;
+            list[index] = list[count - 1];
+            list.RemoveAt(count - 1);
+        }
+
+        public static bool RemoveSwapBack<T>(this IList<T> list, T item)
+        {
+            int index = list.IndexOf(item);
+            if (index < 0)
+            {
+                return false;
+            }
+            RemoveAtSwapBack(list, index);
+            return true;
+        }
     }
 }
