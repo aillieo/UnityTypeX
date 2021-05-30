@@ -27,5 +27,32 @@ namespace AillieoUtils.TypeExt
             hashSet.Clear();
             return unique;
         }
+
+        public static IEnumerable<T> ReverseFast<T>(this IEnumerable<T> source)
+        {
+            if (source is IList<T> list && list.Count > 0)
+            {
+                for (int i = list.Count - 1; i >= 0; i--)
+                {
+                    yield return list[i];
+                }
+            }
+            else if (source is LinkedList<T> linked && linked.Count > 0)
+            {
+                LinkedListNode<T> node = linked.Last;
+                while(node != null)
+                {
+                    yield return node.Value;
+                    node = node.Previous;
+                }
+            }
+            else
+            {
+                foreach (T item in source.Reverse())
+                {
+                    yield return item;
+                }
+            }
+        }
     }
 }

@@ -6,16 +6,30 @@ namespace AillieoUtils.UnityTypeExt
 
 	public static class GameObjectExt
 	{
-        public static void SetLayerRecursively(this GameObject gameObject, int layer)
+        public static void InvokeRecursively(this GameObject gameObject, Action<GameObject> action)
         {
-            gameObject.layer = layer;
+            action(gameObject);
             Transform transform = gameObject.transform;
             for (int i = 0, imax = transform.childCount; i < imax; i++)
             {
-                SetLayerRecursively(transform.GetChild(i).gameObject, layer);
+                action(transform.GetChild(i).gameObject);
             }
         }
 
+        public static void InvokeRecursivelyPost(this GameObject gameObject, Action<GameObject> action)
+        {
+            Transform transform = gameObject.transform;
+            for (int i = 0, imax = transform.childCount; i < imax; i++)
+            {
+                action(transform.GetChild(i).gameObject);
+            }
+            action(gameObject);
+        }
+
+        public static void SetLayerRecursively(this GameObject gameObject, int layer)
+        {
+            InvokeRecursively(gameObject, go => go.layer = layer);
+        }
 
         public static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
         {
