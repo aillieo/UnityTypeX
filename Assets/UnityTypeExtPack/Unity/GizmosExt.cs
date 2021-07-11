@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AillieoUtils.UnityTypeExt
@@ -21,6 +22,27 @@ namespace AillieoUtils.UnityTypeExt
                 Vector3 v = Quaternion.AngleAxis(360f / segments, up) * vector;
                 Gizmos.DrawLine(position + vector, position + v);
                 vector = v;
+            }
+        }
+
+        public static void PushColor(Color color)
+        {
+            Gizmos.color = color;
+        }
+
+        private static readonly Stack<Color> colorStack = new Stack<Color>();
+        public static void PopColor(Color color)
+        {
+            colorStack.Push(Gizmos.color);
+            Gizmos.color = color;
+        }
+
+        public static void PopColor()
+        {
+            if (colorStack.Count > 0)
+            {
+                Color c = colorStack.Pop();
+                Gizmos.color = c;
             }
         }
     }

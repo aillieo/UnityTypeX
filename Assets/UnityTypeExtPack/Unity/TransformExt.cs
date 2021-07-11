@@ -1,9 +1,27 @@
+using System;
 using UnityEngine;
 
 namespace AillieoUtils.UnityTypeExt
 {
     public static class TransformExt
     {
+        public static void InvokeRecursively(this Transform transform, Action<Transform> action)
+        {
+            action(transform);
+            for (int i = 0, imax = transform.childCount; i < imax; i++)
+            {
+                action(transform.GetChild(i));
+            }
+        }
+
+        public static void InvokeRecursivelyPost(this Transform transform, Action<Transform> action)
+        {
+            for (int i = 0, imax = transform.childCount; i < imax; i++)
+            {
+                action(transform.GetChild(i));
+            }
+            action(transform);
+        }
 
         public static Transform FindRecursive(this Transform transform, string name)
         {
