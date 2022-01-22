@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace AillieoUtils.TypeExt
 {
@@ -61,6 +62,29 @@ namespace AillieoUtils.TypeExt
 
             toRemove.Clear();
             return removeCount;
+        }
+
+        [ThreadStatic]
+        private static StringBuilder builderToStringEx = new StringBuilder();
+        public static string ToStringEx<T, U>(this IDictionary<T, U> dictionary)
+        {
+            if (dictionary == null || dictionary.Count == 0)
+            {
+                return string.Empty;
+            }
+
+            builderToStringEx.Clear();
+
+            foreach (var pair in dictionary)
+            {
+                if (builderToStringEx.Length != 0)
+                {
+                    builderToStringEx.Append(',');
+                }
+                builderToStringEx.AppendFormat($"{pair.Key}={pair.Value}");
+            }
+
+            return builderToStringEx.ToString();
         }
     }
 }

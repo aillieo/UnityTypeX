@@ -54,5 +54,39 @@ namespace AillieoUtils.TypeExt
                 }
             }
         }
+
+        public static T MinFor<T>(this IEnumerable<T> source, Func<T, float> func)
+        {
+            T min = default;
+            float minValue = float.PositiveInfinity;
+            foreach (var item in source)
+            {
+                float newValue = func(item);
+                if (newValue < minValue)
+                {
+                    minValue = newValue;
+                    min = item;
+                }
+            }
+
+            return min;
+        }
+
+        public static T MaxFor<T>(this IEnumerable<T> source, Func<T, float> func)
+        {
+            T max = default;
+            float maxValue = float.NegativeInfinity;
+            foreach (var item in source)
+            {
+                float newValue = func(item);
+                if (newValue > maxValue)
+                {
+                    maxValue = newValue;
+                    max = item;
+                }
+            }
+
+            return max;
+        }
     }
 }

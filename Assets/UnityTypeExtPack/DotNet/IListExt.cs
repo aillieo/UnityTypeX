@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace AillieoUtils.TypeExt
 {
@@ -9,19 +10,24 @@ namespace AillieoUtils.TypeExt
 
         private static readonly Random rand = new Random();
 
-        public static void Shuffle<T>(this IList<T> list)
+        public static void Shuffle<T>(this IList<T> list, Random random)
         {
             int n = list.Count;
             while (n-- > 1)
             {
-                int k = rand.Next(n + 1);
+                int k = random.Next(n + 1);
                 T value = list[k];
                 list[k] = list[n];
                 list[n] = value;
             }
         }
 
-        public static T GetRandom<T>(this IList<T> list)
+        public static void Shuffle<T>(this IList<T> list)
+        {
+            Shuffle(list, rand);
+        }
+
+        public static T GetRandom<T>(this IList<T> list, Random random)
         {
             int n = list.Count;
             if (n == 0)
@@ -29,7 +35,12 @@ namespace AillieoUtils.TypeExt
                 throw new Exception("list is empty");
             }
 
-            return list[rand.Next(n + 1)];
+            return list[random.Next(n + 1)];
+        }
+
+        public static T GetRandom<T>(this IList<T> list)
+        {
+            return GetRandom(list, rand);
         }
 
         public static void RemoveAtSwapBack<T>(this IList<T> list, int index)
@@ -48,6 +59,11 @@ namespace AillieoUtils.TypeExt
             }
             RemoveAtSwapBack(list, index);
             return true;
+        }
+
+        public static string ToStringEx<T, U>(this IList<T> list)
+        {
+            return string.Join(",", list);
         }
     }
 }
