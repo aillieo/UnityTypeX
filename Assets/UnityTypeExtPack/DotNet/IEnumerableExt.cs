@@ -14,6 +14,16 @@ namespace AillieoUtils.TypeExt
             }
         }
 
+        public static void ForEach<T>(this IEnumerable<T> source, Action<int, T> action)
+        {
+            int index = 0;
+            foreach (T element in source)
+            {
+                action(index, element);
+                ++index;
+            }
+        }
+
         private static class HashSetForUniqueTest<T>
         {
             [ThreadStatic]

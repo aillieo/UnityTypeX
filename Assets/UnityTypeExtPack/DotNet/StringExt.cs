@@ -22,6 +22,15 @@ namespace AillieoUtils.TypeExt
 
             return builder.ToString();
         }
+
+        public static bool Contains(this string source, string value, StringComparison comparisonType)
+        {
+            if (string.IsNullOrEmpty(source))
+            {
+                return false;
+            }
+            return source.IndexOf(value, comparisonType) >= 0;
+        }
     }
 
 }
