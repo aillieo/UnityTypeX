@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace AillieoUtils.UnityTypeExt
@@ -49,6 +50,34 @@ namespace AillieoUtils.UnityTypeExt
                 component = gameObject.AddComponent(type);
             }
             return component;
+        }
+
+        public static T GetComponentInChildrenExcludeSelf<T>(this GameObject gameObject, bool includeInactive = false)
+            where T : Component
+        {
+            return gameObject.GetComponentsInChildren<T>(includeInactive)
+                .FirstOrDefault(c => c.gameObject != gameObject);
+        }
+
+        public static Component GetComponentInChildrenExcludeSelf(this GameObject gameObject, Type type, bool includeInactive = false)
+        {
+            return gameObject.GetComponentsInChildren(type, includeInactive)
+                .FirstOrDefault(c => c.gameObject != gameObject);
+        }
+
+        public static T[] GetComponentsInChildrenExcludeSelf<T>(this GameObject gameObject, bool includeInactive = false)
+            where T : Component
+        {
+            return gameObject.GetComponentsInChildren<T>(includeInactive)
+                .Where(c => c.gameObject != gameObject)
+                .ToArray();
+        }
+
+        public static Component[] GetComponentsInChildrenExcludeSelf<T>(this GameObject gameObject, Type type, bool includeInactive = false)
+        {
+            return gameObject.GetComponentsInChildren(type, includeInactive)
+                .Where(c => c.gameObject != gameObject)
+                .ToArray();
         }
     }
 }

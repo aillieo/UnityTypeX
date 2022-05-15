@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace AillieoUtils.TypeExt
@@ -37,9 +38,24 @@ namespace AillieoUtils.TypeExt
             return string.IsNullOrEmpty(str);
         }
 
+        public static bool IsNotNullOrEmpty(this string str)
+        {
+            return !string.IsNullOrEmpty(str);
+        }
+
         public static bool IsNullOrWhiteSpace(this string str)
         {
             return string.IsNullOrWhiteSpace(str);
+        }
+
+        public static bool IsNotNullOrWhiteSpace(this string str)
+        {
+            return !string.IsNullOrWhiteSpace(str);
+        }
+
+        public static string Join<T>(this string separator, IEnumerable<T> values)
+        {
+            return string.Join(separator, values);
         }
     }
 }
