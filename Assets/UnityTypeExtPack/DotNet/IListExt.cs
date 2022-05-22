@@ -61,7 +61,7 @@ namespace AillieoUtils.TypeExt
             return true;
         }
 
-        public static string ToStringEx<T, U>(this IList<T> list)
+        public static string ToStringEx<T>(this IList<T> list)
         {
             return string.Join(",", list);
         }
