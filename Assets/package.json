@@ -1,7 +1,7 @@
 {
-    "name": "com.aillieo.unity-type-ext-pack",
-    "displayName": "AillieoUtils UnityTypeExtPack",
-    "description": "AillieoUtils UnityTypeExtPack",
+    "name": "com.aillieo.unity-type-x",
+    "displayName": "AillieoUtils UnityTypeX",
+    "description": "AillieoUtils UnityTypeX",
     "version": "1.0.0",
     "unity": "2018.4",
     "license": "MIT",

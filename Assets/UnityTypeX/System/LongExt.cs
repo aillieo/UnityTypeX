@@ -1,6 +1,6 @@
-﻿using System.Globalization;
+using System.Globalization;
 
-namespace AillieoUtils.TypeExt
+namespace AillieoUtils.TypeX.LongExt
 {
     public static class LongExt
     {

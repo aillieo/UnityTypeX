@@ -1,6 +1,6 @@
-﻿using System.Globalization;
+using System.Globalization;
 
-namespace AillieoUtils.TypeExt
+namespace AillieoUtils.TypeX.IntExt
 {
     public static class IntExt
     {

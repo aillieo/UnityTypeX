@@ -1,5 +1,6 @@
 {
-    "name": "AillieoUtils.UnityTypeExtPack",
+    "name": "AillieoUtils.UnityTypeX",
+    "rootNamespace": "",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

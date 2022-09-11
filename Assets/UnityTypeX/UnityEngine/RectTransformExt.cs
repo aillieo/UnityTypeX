@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AillieoUtils.UnityTypeExt
+namespace AillieoUtils.TypeX.RectTransformExt
 {
     public static class RectTransformExt
     {

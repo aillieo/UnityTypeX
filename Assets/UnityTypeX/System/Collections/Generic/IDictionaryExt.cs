@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AillieoUtils.TypeExt
+namespace AillieoUtils.TypeX.IDictionaryExt
 {
 
     public static class IDictionaryExt

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AillieoUtils.UnityTypeExt
+namespace AillieoUtils.TypeX.Vector3Ext
 {
     public static class Vector3Ext
     {

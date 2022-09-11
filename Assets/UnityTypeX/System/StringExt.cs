@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
-namespace AillieoUtils.TypeExt
+namespace AillieoUtils.TypeX.StringExt
 {
     public static class StringExt
     {
@@ -56,6 +57,29 @@ namespace AillieoUtils.TypeExt
         public static string Join<T>(this string separator, IEnumerable<T> values)
         {
             return string.Join(separator, values);
+        }
+
+        public static string Truncate(this string source, int lengthMax, string ellipses = "...")
+        {
+            if (source.Length <= lengthMax)
+            {
+                return source;
+            }
+
+            int lengthKeep = lengthMax - ellipses.Length;
+            return source.Substring(0, lengthKeep) + ellipses;
+        }
+
+        public static string TruncateUTF8(this string source, int charsMax, string ellipses = "...")
+        {
+            StringInfo stringInfo = new StringInfo(source);
+            if (stringInfo.LengthInTextElements <= charsMax)
+            {
+                return source;
+            }
+
+            string truncated = stringInfo.SubstringByTextElements(0, charsMax);
+            return truncated + ellipses;
         }
     }
 }

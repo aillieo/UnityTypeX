@@ -1,6 +1,6 @@
-﻿using System.Globalization;
+using System.Globalization;
 
-namespace AillieoUtils.TypeExt
+namespace AillieoUtils.TypeX.DoubleExt
 {
     public static class DoubleExt
     {

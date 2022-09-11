@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AillieoUtils.TypeExt
+namespace AillieoUtils.TypeX.IEnumerableExt
 {
     public static class IEnumerableExt
     {
@@ -14,12 +14,12 @@ namespace AillieoUtils.TypeExt
             }
         }
 
-        public static void ForEach<T>(this IEnumerable<T> source, Action<int, T> action)
+        public static void ForEach<T>(this IEnumerable<T> source, Action<T, int> action)
         {
             int index = 0;
             foreach (T element in source)
             {
-                action(index, element);
+                action(element, index);
                 ++index;
             }
         }
@@ -50,7 +50,7 @@ namespace AillieoUtils.TypeExt
             else if (source is LinkedList<T> linked && linked.Count > 0)
             {
                 LinkedListNode<T> node = linked.Last;
-                while(node != null)
+                while (node != null)
                 {
                     yield return node.Value;
                     node = node.Previous;
@@ -102,6 +102,32 @@ namespace AillieoUtils.TypeExt
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
         {
             return source == null || !source.Any();
+        }
+
+        public static bool ContainsAny<T>(this IEnumerable<T> source, IEnumerable<T> items)
+        {
+            foreach (var item in items)
+            {
+                if (source.Contains(item))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static bool ContainsAll<T>(this IEnumerable<T> source, IEnumerable<T> items)
+        {
+            foreach (var item in items)
+            {
+                if (!source.Contains(item))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

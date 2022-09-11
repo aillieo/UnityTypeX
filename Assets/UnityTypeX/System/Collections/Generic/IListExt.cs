@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AillieoUtils.TypeExt
+namespace AillieoUtils.TypeX.IListExt
 {
 
     public static class IListExt

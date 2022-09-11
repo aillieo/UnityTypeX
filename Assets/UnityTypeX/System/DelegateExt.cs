@@ -1,6 +1,6 @@
 using System;
 
-namespace AillieoUtils.TypeExt
+namespace AillieoUtils.TypeX.DelegateExt
 {
     public static class DelegateExt
     {

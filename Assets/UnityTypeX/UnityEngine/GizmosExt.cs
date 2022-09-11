@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AillieoUtils.UnityTypeExt
+namespace AillieoUtils.TypeX.GizmosExt
 {
     public static class GizmosExt
     {

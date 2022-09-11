@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-namespace AillieoUtils.UnityTypeExt
+namespace AillieoUtils.TypeX.GameObjectExt
 {
 
 	public static class GameObjectExt

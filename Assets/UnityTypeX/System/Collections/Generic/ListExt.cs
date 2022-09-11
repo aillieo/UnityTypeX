@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AillieoUtils.TypeExt
+namespace AillieoUtils.TypeX.ListExt
 {
     public static class ListExt
     {

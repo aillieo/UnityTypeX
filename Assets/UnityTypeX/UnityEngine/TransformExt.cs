@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace AillieoUtils.UnityTypeExt
+namespace AillieoUtils.TypeX.TransformExt
 {
     public static class TransformExt
     {
