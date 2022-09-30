@@ -129,5 +129,10 @@ namespace AillieoUtils.TypeX.IEnumerableExt
 
             return true;
         }
+
+        public static string ToStringEx<T>(this IEnumerable<T> source)
+        {
+            return string.Join(",", source);
+        }
     }
 }

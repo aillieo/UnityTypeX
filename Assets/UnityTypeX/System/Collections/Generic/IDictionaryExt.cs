@@ -81,6 +81,7 @@ namespace AillieoUtils.TypeX.IDictionaryExt
                 {
                     builderToStringEx.Append(',');
                 }
+
                 builderToStringEx.AppendFormat($"{pair.Key}={pair.Value}");
             }
 

@@ -57,13 +57,9 @@ namespace AillieoUtils.TypeX.IListExt
             {
                 return false;
             }
+
             RemoveAtSwapBack(list, index);
             return true;
-        }
-
-        public static string ToStringEx<T>(this IList<T> list)
-        {
-            return string.Join(",", list);
         }
     }
 }
