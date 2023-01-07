@@ -34,21 +34,21 @@ namespace AillieoUtils.TypeX.GameObjectExt
 
         public static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
         {
-            T component = gameObject.GetComponent<T>();
-            if (component == null)
+            if (!gameObject.TryGetComponent(out T component))
             {
                 component = gameObject.AddComponent<T>();
             }
+
             return component;
         }
 
         public static Component GetOrAddComponent(this GameObject gameObject, Type type)
         {
-            Component component = gameObject.GetComponent(type);
-            if (component == null)
+            if (!gameObject.TryGetComponent(type, out Component component))
             {
                 component = gameObject.AddComponent(type);
             }
+
             return component;
         }
 

@@ -35,7 +35,7 @@ namespace AillieoUtils.TypeX.IListExt
                 throw new Exception("list is empty");
             }
 
-            return list[random.Next(n + 1)];
+            return list[random.Next(n)];
         }
 
         public static T GetRandom<T>(this IList<T> list)
