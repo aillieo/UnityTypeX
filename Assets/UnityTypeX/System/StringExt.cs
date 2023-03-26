@@ -13,9 +13,15 @@ namespace AillieoUtils.TypeX.StringExt
         }
 
         [ThreadStatic]
-        private static StringBuilder builder = new StringBuilder();
+        private static StringBuilder builder;
+
         public static string Repeat(this string stringToRepeat, int repeat)
         {
+            if (builder == null)
+            {
+                builder = new StringBuilder();
+            }
+
             builder.Clear();
             for (int i = 0; i < repeat; i++)
             {
@@ -31,6 +37,7 @@ namespace AillieoUtils.TypeX.StringExt
             {
                 return false;
             }
+
             return source.IndexOf(value, comparisonType) >= 0;
         }
 
@@ -80,6 +87,46 @@ namespace AillieoUtils.TypeX.StringExt
 
             string truncated = stringInfo.SubstringByTextElements(0, charsMax);
             return truncated + ellipses;
+        }
+
+        public static IEnumerable<StringSegment> SplitNonAlloc(this string source, char separator, StringSplitOptions options = StringSplitOptions.None)
+        {
+            return StringSplitUtils.Split(source, separator, int.MaxValue, options);
+        }
+
+        public static IEnumerable<StringSegment> SplitNonAlloc(this string source, char separator, int count, StringSplitOptions options = StringSplitOptions.None)
+        {
+            return StringSplitUtils.Split(source, separator, count, options);
+        }
+
+        public static IEnumerable<StringSegment> SplitNonAlloc(this string source, char[] separator, StringSplitOptions options = StringSplitOptions.None)
+        {
+            return StringSplitUtils.Split(source, separator, int.MaxValue, options);
+        }
+
+        public static IEnumerable<StringSegment> SplitNonAlloc(this string source, char[] separator, int count, StringSplitOptions options = StringSplitOptions.None)
+        {
+            return StringSplitUtils.Split(source, separator, count, options);
+        }
+
+        public static IEnumerable<StringSegment> SplitNonAlloc(this string source, string separator, StringSplitOptions options = StringSplitOptions.None)
+        {
+            return StringSplitUtils.Split(source, separator, int.MaxValue, options);
+        }
+
+        public static IEnumerable<StringSegment> SplitNonAlloc(this string source, string separator, int count, StringSplitOptions options = StringSplitOptions.None)
+        {
+            return StringSplitUtils.Split(source, separator, count, options);
+        }
+
+        public static IEnumerable<StringSegment> SplitNonAlloc(this string source, string[] separator, StringSplitOptions options = StringSplitOptions.None)
+        {
+            return StringSplitUtils.Split(source, separator, int.MaxValue, options);
+        }
+
+        public static IEnumerable<StringSegment> SplitNonAlloc(this string source, string[] separator, int count, StringSplitOptions options = StringSplitOptions.None)
+        {
+            return StringSplitUtils.Split(source, separator, count, options);
         }
     }
 }

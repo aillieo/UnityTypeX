@@ -5,8 +5,8 @@ using UnityEngine;
 namespace AillieoUtils.TypeX.GameObjectExt
 {
 
-	public static class GameObjectExt
-	{
+    public static class GameObjectExt
+    {
         public static void InvokeRecursively(this GameObject gameObject, Action<GameObject> action)
         {
             action(gameObject);
@@ -24,6 +24,7 @@ namespace AillieoUtils.TypeX.GameObjectExt
             {
                 action(transform.GetChild(i).gameObject);
             }
+
             action(gameObject);
         }
 
@@ -32,7 +33,8 @@ namespace AillieoUtils.TypeX.GameObjectExt
             InvokeRecursively(gameObject, go => go.layer = layer);
         }
 
-        public static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
+        public static T GetOrAddComponent<T>(this GameObject gameObject)
+            where T : Component
         {
             if (!gameObject.TryGetComponent(out T component))
             {

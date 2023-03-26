@@ -27,11 +27,16 @@ namespace AillieoUtils.TypeX.IEnumerableExt
         private static class HashSetForUniqueTest<T>
         {
             [ThreadStatic]
-            public static readonly HashSet<T> hashSet = new HashSet<T>();
+            public static HashSet<T> hashSet;
         }
 
         public static bool IsUnique<T>(this IEnumerable<T> source)
         {
+            if (HashSetForUniqueTest<T>.hashSet == null)
+            {
+                HashSetForUniqueTest<T>.hashSet = new HashSet<T>();
+            }
+
             HashSet<T> hashSet = HashSetForUniqueTest<T>.hashSet;
             bool unique = source.All(t => hashSet.Add(t));
             hashSet.Clear();

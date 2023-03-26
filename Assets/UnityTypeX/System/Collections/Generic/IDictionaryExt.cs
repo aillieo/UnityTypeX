@@ -40,10 +40,16 @@ namespace AillieoUtils.TypeX.IDictionaryExt
         private static class KeysToRemove<T>
         {
             [ThreadStatic]
-            public readonly static List<T> toRemove = new List<T>();
+            public static List<T> toRemove;
         }
+
         public static int RemoveAll<T, U>(this IDictionary<T, U> dictionary, Func<T, U, bool> predicate)
         {
+            if (KeysToRemove<T>.toRemove == null)
+            {
+                KeysToRemove<T>.toRemove = new List<T>();
+            }
+
             List<T> toRemove = KeysToRemove<T>.toRemove;
             toRemove.Clear();
             foreach (var pair in dictionary)
@@ -65,12 +71,18 @@ namespace AillieoUtils.TypeX.IDictionaryExt
         }
 
         [ThreadStatic]
-        private static StringBuilder builderToStringEx = new StringBuilder();
+        private static StringBuilder builderToStringEx;
+
         public static string ToStringEx<T, U>(this IDictionary<T, U> dictionary)
         {
             if (dictionary == null || dictionary.Count == 0)
             {
                 return string.Empty;
+            }
+
+            if (builderToStringEx == null)
+            {
+                builderToStringEx = new StringBuilder();
             }
 
             builderToStringEx.Clear();
