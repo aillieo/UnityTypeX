@@ -11,21 +11,59 @@ namespace AillieoUtils.TypeX.Tests
     public class StringSplitTests
     {
         [Test]
-        public void Split()
+        public void Split1()
         {
-            string s1 = "1A,2A,3A,4A,5A,6A";
+            string input = "hello world";
+            char separator = ' ';
+            var result = input.SplitNonAlloc(separator, 2);
+            Assert.AreEqual(2, result.Count());
+            Assert.AreEqual("hello", result.ElementAt(0).ToString());
+            Assert.AreEqual("world", result.ElementAt(1).ToString());
+        }
 
-            var l = new List<StringSegment>(s1.SplitNonAlloc(','));
+        [Test]
+        public void Split2()
+        {
+            string input = "hello world i am aillieo";
+            char separator = ' ';
+            var result = input.SplitNonAlloc(separator, 3);
+            Assert.AreEqual(3, result.Count());
+            Assert.AreEqual("hello", result.ElementAt(0).ToString());
+            Assert.AreEqual("world", result.ElementAt(1).ToString());
+            Assert.AreEqual("universe", result.ElementAt(2).ToString());
+        }
 
-            //UnityEngine.Profiling.Profiler.BeginSample("Split1");
-            var sna = s1.SplitNonAlloc(',');
-            //UnityEngine.Profiling.Profiler.EndSample();
-            //UnityEngine.Profiling.Profiler.BeginSample("Split2");
-            var snac = sna.Count();
-            //UnityEngine.Profiling.Profiler.EndSample();
+        [Test]
+        public void Split3()
+        {
+            string input = "helloworld";
+            char separator = ' ';
+            var result = input.SplitNonAlloc(separator, 2);
+            Assert.AreEqual(1, result.Count());
+            Assert.AreEqual("helloworld", result.ElementAt(0).ToString());
+        }
 
-            UnityEngine.Debug.Log(string.Join("\n", s1.SplitNonAlloc(',')));
-            UnityEngine.Debug.Log(string.Join("\n", l));
+        [Test]
+        public void Split4()
+        {
+            string input = "hello world i am aillieo";
+            char separator = ' ';
+            var result = input.SplitNonAlloc(separator, 2);
+            Assert.AreEqual(2, result.Count());
+            Assert.AreEqual("hello", result.ElementAt(0).ToString());
+            Assert.AreEqual("world universe", result.ElementAt(1).ToString());
+        }
+
+        [Test]
+        public void Split5()
+        {
+            string input = "hello world  i am aillieo ";
+            char separator = ' ';
+            var result = input.SplitNonAlloc(separator, 3, StringSplitOptions.RemoveEmptyEntries);
+            Assert.AreEqual(3, result.Count());
+            Assert.AreEqual("hello", result.ElementAt(0).ToString());
+            Assert.AreEqual("world", result.ElementAt(1).ToString());
+            Assert.AreEqual("universe", result.ElementAt(2).ToString());
         }
     }
 }
