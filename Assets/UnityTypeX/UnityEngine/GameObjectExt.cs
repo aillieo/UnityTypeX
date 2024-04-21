@@ -98,5 +98,20 @@ namespace AillieoUtils.TypeX.GameObjectExt
             return !(gameObject.scene.IsValid() || gameObject.scene.isLoaded);
 #endif
         }
+
+        public static string GetPathInHierarchy(this GameObject gameObject, string separator = "/")
+        {
+            var path = gameObject.name;
+
+            Transform parent = gameObject.transform.parent;
+
+            while (parent != null)
+            {
+                path = parent.name + separator + path;
+                parent = parent.parent;
+            }
+
+            return path;
+        }
     }
 }
