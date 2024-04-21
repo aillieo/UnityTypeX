@@ -1,7 +1,12 @@
-using UnityEngine;
+// -----------------------------------------------------------------------
+// <copyright file="RenderTextureExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.RenderTextureExt
 {
+    using UnityEngine;
 
     public static class RenderTextureExt
     {

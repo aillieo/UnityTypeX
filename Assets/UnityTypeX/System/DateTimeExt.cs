@@ -1,7 +1,13 @@
-using System;
+// -----------------------------------------------------------------------
+// <copyright file="DateTimeExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.DateTimeExt
 {
+    using System;
+
     public static class DateTimeExt
     {
         private static readonly DateTime reference = new DateTime(1970, 1, 1).ToLocalTime();

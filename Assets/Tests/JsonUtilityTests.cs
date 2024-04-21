@@ -1,12 +1,14 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using AillieoUtils.TypeX.StringExt;
-using NUnit.Framework;
-using UnityEngine;
+// -----------------------------------------------------------------------
+// <copyright file="JsonUtilityTests.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.Tests
 {
+    using NUnit.Framework;
+    using UnityEngine;
+
     public class JsonUtilityTests
     {
         [Test]
@@ -23,7 +25,6 @@ namespace AillieoUtils.TypeX.Tests
         [Test]
         public void FromJson()
         {
-
         }
     }
 }

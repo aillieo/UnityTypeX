@@ -1,9 +1,17 @@
-using System;
-using System.Linq;
-using UnityEngine;
+// -----------------------------------------------------------------------
+// <copyright file="GameObjectExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.GameObjectExt
 {
+    using System;
+    using System.Linq;
+    using UnityEngine;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 
     public static class GameObjectExt
     {
@@ -80,6 +88,15 @@ namespace AillieoUtils.TypeX.GameObjectExt
             return gameObject.GetComponentsInChildren(type, includeInactive)
                 .Where(c => c.gameObject != gameObject)
                 .ToArray();
+        }
+
+        public static bool IsPrefab(this GameObject gameObject)
+        {
+#if UNITY_EDITOR
+            return PrefabUtility.GetCorrespondingObjectFromSource(gameObject) == null && PrefabUtility.GetPrefabInstanceHandle(gameObject) != null;
+#else
+            return !(gameObject.scene.IsValid() || gameObject.scene.isLoaded);
+#endif
         }
     }
 }

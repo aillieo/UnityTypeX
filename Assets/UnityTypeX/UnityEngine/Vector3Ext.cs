@@ -1,7 +1,13 @@
-using UnityEngine;
+// -----------------------------------------------------------------------
+// <copyright file="Vector3Ext.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.Vector3Ext
 {
+    using UnityEngine;
+
     public static class Vector3Ext
     {
         public static Vector3 SetX(this Vector3 v3, float x)

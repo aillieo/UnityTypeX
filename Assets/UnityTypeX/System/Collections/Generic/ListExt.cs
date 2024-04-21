@@ -1,8 +1,14 @@
-using System;
-using System.Collections.Generic;
+// -----------------------------------------------------------------------
+// <copyright file="ListExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.ListExt
 {
+    using System;
+    using System.Collections.Generic;
+
     public static class ListExt
     {
         public static void ClearFast<T>(this List<T> list)

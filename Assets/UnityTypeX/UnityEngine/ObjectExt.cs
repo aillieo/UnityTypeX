@@ -1,11 +1,16 @@
-using System.Linq;
-using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+// -----------------------------------------------------------------------
+// <copyright file="ObjectExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.GameObjectExt
 {
+    using UnityEngine;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
+
     public static class ObjectExt
     {
         public static void SafeDestroy(this Object obj)

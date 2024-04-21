@@ -1,8 +1,17 @@
-using System.Collections.Generic;
-using UnityEngine;
+// -----------------------------------------------------------------------
+// <copyright file="GizmosExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.GizmosExt
 {
+    using System.Collections.Generic;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
+    using UnityEngine;
+
     public static class GizmosExt
     {
         public static void DrawArrow(Vector3 position, Vector3 direction, float headLength = 0.5f, float headAngle = 20f)
@@ -25,13 +34,22 @@ namespace AillieoUtils.TypeX.GizmosExt
             }
         }
 
-        public static void PushColor(Color color)
+        public static void DrawTransform(Transform transform, float globalScale = 1f)
         {
-            Gizmos.color = color;
+            var position = transform.position;
+            var scale = transform.lossyScale * globalScale;
+            PushColor(Color.red);
+            Gizmos.DrawRay(position, transform.right * scale.x);
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(position, transform.up * scale.y);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(position, transform.forward * scale.z);
+            PopColor();
         }
 
         private static readonly Stack<Color> colorStack = new Stack<Color>();
-        public static void PopColor(Color color)
+
+        public static void PushColor(Color color)
         {
             colorStack.Push(Gizmos.color);
             Gizmos.color = color;
@@ -44,6 +62,13 @@ namespace AillieoUtils.TypeX.GizmosExt
                 Color c = colorStack.Pop();
                 Gizmos.color = c;
             }
+        }
+
+        public static void DrawLabel(Vector3 position, string text)
+        {
+#if UNITY_EDITOR
+            Handles.Label(position, text);
+#endif
         }
     }
 }

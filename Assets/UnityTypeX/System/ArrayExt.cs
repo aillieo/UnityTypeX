@@ -1,7 +1,13 @@
-using System;
+// -----------------------------------------------------------------------
+// <copyright file="ArrayExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.ArrayExt
 {
+    using System;
+
     public static class ArrayExt
     {
         public static void Clear<T>(this Array array)

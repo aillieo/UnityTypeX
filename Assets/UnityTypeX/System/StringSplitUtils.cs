@@ -1,9 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+// -----------------------------------------------------------------------
+// <copyright file="StringSplitUtils.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.StringExt
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
     public readonly struct StringSegment
     {
         public readonly string rawString;
@@ -19,12 +25,12 @@ namespace AillieoUtils.TypeX.StringExt
 
         public override string ToString()
         {
-            if (string.IsNullOrEmpty(rawString))
+            if (string.IsNullOrEmpty(this.rawString))
             {
                 return string.Empty;
             }
 
-            return rawString.Substring(startIndex, length);
+            return this.rawString.Substring(this.startIndex, this.length);
         }
     }
 
@@ -108,7 +114,7 @@ namespace AillieoUtils.TypeX.StringExt
 
             IEnumerator IEnumerable.GetEnumerator()
             {
-                return GetEnumerator();
+                return this.GetEnumerator();
             }
 
             public struct StringSegmentEnumerator : IEnumerator<StringSegment>
@@ -133,24 +139,24 @@ namespace AillieoUtils.TypeX.StringExt
 
                     int index = -1;
                     int sepLength = 1;
-                    switch (stringSplit.splitBy)
+                    switch (this.stringSplit.splitBy)
                     {
                         case SplitBy.Char:
-                            index = rawString.IndexOf(stringSplit.cSeparator, processing.startIndex);
+                            index = rawString.IndexOf(this.stringSplit.cSeparator, this.processing.startIndex);
                             break;
                         case SplitBy.Chars:
-                            index = rawString.IndexOfAny(stringSplit.cSeparators, processing.startIndex);
+                            index = rawString.IndexOfAny(this.stringSplit.cSeparators, this.processing.startIndex);
                             break;
                         case SplitBy.String:
-                            sepLength = stringSplit.sSeparator.Length;
-                            index = rawString.IndexOf(stringSplit.sSeparator, processing.startIndex, StringComparison.Ordinal);
+                            sepLength = this.stringSplit.sSeparator.Length;
+                            index = rawString.IndexOf(this.stringSplit.sSeparator, this.processing.startIndex, StringComparison.Ordinal);
                             break;
                         case SplitBy.Strings:
-                            for (int i = 0, count = stringSplit.sSeparators.Length; i < count; ++i)
+                            for (int i = 0, count = this.stringSplit.sSeparators.Length; i < count; ++i)
                             {
-                                string s = stringSplit.sSeparators[i];
+                                string s = this.stringSplit.sSeparators[i];
                                 sepLength = s.Length;
-                                index = rawString.IndexOf(s, processing.startIndex, StringComparison.Ordinal);
+                                index = rawString.IndexOf(s, this.processing.startIndex, StringComparison.Ordinal);
                                 if (index >= 0)
                                 {
                                     break;
@@ -162,14 +168,14 @@ namespace AillieoUtils.TypeX.StringExt
 
                     if (index == -1)
                     {
-                        Current = processing;
-                        processing = new StringSegment(rawString, rawString.Length, 0);
+                        this.Current = this.processing;
+                        this.processing = new StringSegment(rawString, rawString.Length, 0);
                     }
                     else
                     {
-                        Current = new StringSegment(rawString, processing.startIndex, index - processing.startIndex);
+                        this.Current = new StringSegment(rawString, this.processing.startIndex, index - this.processing.startIndex);
                         int newStart = index + sepLength;
-                        processing = new StringSegment(rawString, newStart, rawString.Length - newStart);
+                        this.processing = new StringSegment(rawString, newStart, rawString.Length - newStart);
                     }
 
                     return true;

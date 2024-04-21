@@ -1,9 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+// -----------------------------------------------------------------------
+// <copyright file="IDictionaryExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.IDictionaryExt
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
 
     public static class IDictionaryExt
     {
@@ -13,6 +18,7 @@ namespace AillieoUtils.TypeX.IDictionaryExt
             {
                 return value;
             }
+
             return default;
         }
 
@@ -22,6 +28,7 @@ namespace AillieoUtils.TypeX.IDictionaryExt
             {
                 return value;
             }
+
             return defaultValue;
         }
 

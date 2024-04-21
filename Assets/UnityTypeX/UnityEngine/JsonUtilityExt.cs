@@ -1,9 +1,14 @@
-using System;
-using System.Text;
-using UnityEngine;
+// -----------------------------------------------------------------------
+// <copyright file="JsonUtilityExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.JsonUtilityExt
 {
+    using System;
+    using System.Text;
+    using UnityEngine;
 
     public static class JsonUtilityExt
     {

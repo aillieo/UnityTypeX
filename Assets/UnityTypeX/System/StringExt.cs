@@ -1,10 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
+// -----------------------------------------------------------------------
+// <copyright file="StringExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.StringExt
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Text;
+
     public static class StringExt
     {
         public static string Repeat(this char chatToRepeat, int repeat)

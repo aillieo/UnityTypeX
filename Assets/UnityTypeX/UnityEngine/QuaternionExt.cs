@@ -1,7 +1,12 @@
-using UnityEngine;
+// -----------------------------------------------------------------------
+// <copyright file="QuaternionExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.QuaternionExt
 {
+    using UnityEngine;
 
     public static class QuaternionExt
     {

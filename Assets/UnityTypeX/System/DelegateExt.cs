@@ -1,10 +1,17 @@
-using System;
+// -----------------------------------------------------------------------
+// <copyright file="DelegateExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.DelegateExt
 {
+    using System;
+
     public static class DelegateExt
     {
-        public static void RemoveAll<T>(ref T del) where T : Delegate
+        public static void RemoveAll<T>(ref T del)
+            where T : Delegate
         {
             if (del != null)
             {

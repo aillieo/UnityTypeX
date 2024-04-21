@@ -1,9 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+// -----------------------------------------------------------------------
+// <copyright file="IEnumerableExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.IEnumerableExt
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public static class IEnumerableExt
     {
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)

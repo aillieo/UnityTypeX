@@ -1,8 +1,14 @@
-using System;
-using UnityEngine;
+// -----------------------------------------------------------------------
+// <copyright file="TransformExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.TransformExt
 {
+    using System;
+    using UnityEngine;
+
     public static class TransformExt
     {
         public static void InvokeRecursively(this Transform transform, Action<Transform> action)
@@ -20,6 +26,7 @@ namespace AillieoUtils.TypeX.TransformExt
             {
                 action(transform.GetChild(i));
             }
+
             action(transform);
         }
 
@@ -43,6 +50,5 @@ namespace AillieoUtils.TypeX.TransformExt
 
             return null;
         }
-
     }
 }

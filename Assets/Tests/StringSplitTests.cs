@@ -1,13 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using AillieoUtils.TypeX.StringExt;
-using NUnit.Framework;
-using UnityEngine;
+// -----------------------------------------------------------------------
+// <copyright file="StringSplitTests.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.Tests
 {
+    using System;
+    using System.Linq;
+    using AillieoUtils.TypeX.StringExt;
+    using NUnit.Framework;
+
     public class StringSplitTests
     {
         [Test]

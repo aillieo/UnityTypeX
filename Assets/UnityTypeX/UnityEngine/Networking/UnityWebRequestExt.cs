@@ -1,3 +1,9 @@
+// -----------------------------------------------------------------------
+// <copyright file="UnityWebRequestExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;

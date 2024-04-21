@@ -1,13 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+// -----------------------------------------------------------------------
+// <copyright file="IListExt.cs" company="AillieoTech">
+// Copyright (c) AillieoTech. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace AillieoUtils.TypeX.IListExt
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
 
     public static class IListExt
     {
-
         private static readonly Random rand = new Random();
 
         public static void Shuffle<T>(this IList<T> list, Random random)
@@ -59,6 +63,18 @@ namespace AillieoUtils.TypeX.IListExt
             }
 
             RemoveAtSwapBack(list, index);
+            return true;
+        }
+
+        public static bool AddIfNotExist<T>(this IList<T> list, T item)
+        {
+            int index = list.IndexOf(item);
+            if (index >= 0)
+            {
+                return false;
+            }
+
+            list.Add(item);
             return true;
         }
     }
